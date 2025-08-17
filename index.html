@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>El Horno Mexicano — Pedidos</title>
+  <meta name="description" content="Pizzería El Horno Mexicano. Pide a domicilio o para recoger. Chatbot con IBM watsonx Assistant." />
+  <style>
+    :root{
+      --bg:#0f172a;/* slate-900 */
+      --card:#111827;/* gray-900 */
+      --text:#e5e7eb;/* gray-200 */
+      --accent:#f59e0b;/* amber-500 */
+      --muted:#94a3b8;/* slate-400 */
+    }
+    html,body{height:100%;}
+    body{margin:0;background:linear-gradient(120deg,#0f172a,#0b1022);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;}
+    .container{max-width:960px;margin:0 auto;padding:40px 20px;}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.08);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:28px;backdrop-filter:blur(6px)}
+    h1{font-size:clamp(28px,4vw,42px);line-height:1.1;margin:0 0 12px}
+    p{margin:0 0 10px;color:var(--muted)}
+    .cta{display:inline-block;margin-top:16px;padding:12px 18px;background:var(--accent);color:#1b1b1b;border-radius:12px;text-decoration:none;font-weight:700}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:22px}
+    .grid > div{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px}
+    .footer{opacity:.7;font-size:14px;margin-top:30px}
+    .fab{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#1b1b1b;border:none;border-radius:999px;padding:14px 18px;font-weight:800;box-shadow:0 10px 24px rgba(0,0,0,.35);cursor:pointer}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="card" aria-labelledby="title">
+      <h1 id="title">🍕 El Horno Mexicano</h1>
+      <p>Bienvenido a nuestro sitio oficial. Aquí podrás pedir tu pizza favorita 🍕🔥</p>
+      <a class="cta" href="#" id="openChat">Hablar con el asistente</a>
+
+      <div class="grid" role="list" aria-label="Ventajas">
+        <div role="listitem">⚡ Pedido rápido y guiado</div>
+        <div role="listitem">🕒 Horario: 12:00 – 22:00</div>
+        <div role="listitem">📞 Soporte: 55 1234 5678</div>
+      </div>
+      <p class="footer">Este sitio integra IBM <strong>watsonx Assistant</strong> vía Web Chat.</p>
+    </section>
+  </main>
+
+  <!-- Watson Assistant Web Chat -->
+  <script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "e965d751-44b3-4f32-9b03-e35d8d7a64f7", // The ID of this integration.
+      region: "us-south", // The region your integration is hosted in.
+      serviceInstanceID: "76634c66-7892-4ae5-a808-ba1192209f1d", // The ID of your service instance.
+      onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function(){
+      const t=document.createElement('script');
+      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+  </script>
+</body>
+</html>
